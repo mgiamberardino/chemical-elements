@@ -8,6 +8,8 @@ import java.util.Set;
 import java.util.TreeSet;
 
 public final class Symbols {
+	
+	public static String NO_POSSIBLE_NAME = "__no_possible_name__";
 
 	public static int calculateSymbolAlternatives(String element) {
 		Set<Character> letters = new HashSet<Character>();
@@ -30,7 +32,8 @@ public final class Symbols {
 		}
 		Iterator<Character> it = letters.iterator();
 		Character firstAlph = it.next();
-		if (element.length() == (element.indexOf(firstAlph) + 1)){
+		if (element.length() == (element.indexOf(firstAlph) + 1)
+				&& it.hasNext()){
 			return new StringBuffer()
 					.append(Character.toUpperCase(it.next()))
 					.append(firstAlph).toString();
@@ -43,7 +46,7 @@ public final class Symbols {
 						.append(actual).toString();
 			}
 		}
-		return "";
+		return NO_POSSIBLE_NAME;
 	}
 
 }
